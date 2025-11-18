@@ -27,6 +27,7 @@ public class Enemy : MonoBehaviour
     private bool hasScore = false;
     AudioManager audioManager;
     public Slider enemySlider;
+    public GameObject enemySliders;
 
     private void Awake()
     {
@@ -95,6 +96,8 @@ public class Enemy : MonoBehaviour
 
         yield return new WaitForSeconds(3f);
 
+        enemySliders.SetActive(false);
+
         SetVisibility(false);
 
         Vector3 randomlocation = getrandomlocation();
@@ -109,6 +112,8 @@ public class Enemy : MonoBehaviour
         animator.Play("Idle");
 
         navAgent.enabled = true;
+        enemySliders.SetActive(true);
+
 
         SetVisibility(true);
 
